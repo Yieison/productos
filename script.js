@@ -48,11 +48,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 
-/*AÑADIR PRODUCTOS*/
-document.getElementById('miBoton').addEventListener('click', function() {
+/* AÑADIR PRODUCTOS */
+var agregarForm = document.getElementById("miFormulario"); // Cambio el ID del formulario
+
+agregarForm.addEventListener('submit', function(event) { // Escuchar el evento de envío del formulario
+    event.preventDefault(); // Prevenir el envío del formulario por defecto
+
     var nombre = document.getElementById('nombre').value;
     var precio = document.getElementById('precio').value;
     var descripcion = document.getElementById('descripcion').value;
+
+    if (nombre.trim() === "" || precio.trim() === "" || descripcion.trim() === "") {
+        alert("Por favor, complete todos los campos.");
+        return;
+    }
 
     fetch('https://siaweb-nodejs.carlos-reneren7.repl.co/productos', {
         method: 'POST',
@@ -78,4 +87,4 @@ document.getElementById('miBoton').addEventListener('click', function() {
 /*CANCELAR*/
 document.getElementById('botoncancelar').onclick = function() {
     window.location.href = '../index.html';
-}
+};
