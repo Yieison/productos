@@ -46,6 +46,3 @@ function fetchData(page) {
         console.error('Error:', error);
       });
 };
-
-// Cargar la primera página al cargar la página
-fetchData(currentPage);
