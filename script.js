@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Elemento donde se mostrarán los datos
     var dataBody = document.getElementById("data-body");
 
     // Realizar la solicitud a la URL
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json(); // Convertir la respuesta a JSON
         })
         .then(function(data) {
-            // Procesar los datos y agregarlos a la tabla
             data.forEach(function(product, index) {
                 var row = document.createElement("tr");
 
@@ -24,11 +22,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 var descriptionCell = document.createElement("td");
                 descriptionCell.textContent = product.descripcion;
 
+                var viewCell = document.createElement("td"); // Nueva celda
+
+                // Agregar un enlace "Ver" que enlace a la página "ver_producto.html"
+                var viewLink = document.createElement("a");
+                viewLink.href = "./html/actualizar.html?id=" + index; // Puedes pasar el ID del producto como parámetro
+
+                var viewButton = document.createElement("button");
+                viewButton.textContent = "Ver";
+                viewLink.appendChild(viewButton);
+
+                viewCell.appendChild(viewLink);
+
                 row.appendChild(numberCell);
                 row.appendChild(nameCell);
                 row.appendChild(priceCell);
                 row.appendChild(descriptionCell);
-
+                row.appendChild(viewCell); // Agregar la nueva celda a la fila
                 dataBody.appendChild(row);
             });
         })
