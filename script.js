@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /* AÑADIR PRODUCTOS */
-var agregarForm = document.getElementById("miFormulario"); // Cambio el ID del formulario
-
-agregarForm.addEventListener('submit', function(event) { // Escuchar el evento de envío del formulario
-    event.preventDefault(); // Prevenir el envío del formulario por defecto
+document.getElementById('miBoton').addEventListener('click', function() {
 
     var nombre = document.getElementById('nombre').value;
     var precio = document.getElementById('precio').value;
